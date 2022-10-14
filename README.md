@@ -1,24 +1,29 @@
-# README
+# SOMESPLASH
+## Description
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome aboard fellow developer, this project is about  an open source platforms to share amazing photos with the world.
 
-Things you may want to cover:
+This project was built only with the design of the main views [here](https://www.figma.com/file/UqSMl0f43mV6yqguK6IrVR/Somesplash?node-id=888%3A708). My Team and me had to infer many details based on the design to develop this design. 
 
-* Ruby version
+ ## Project's Erd
+   This is the ERD that we achieved to build with the design in Figma and infering many details.
 
-* System dependencies
+### Erd Somesplash
 
-* Configuration
+![ERD](ERD.PNG)
 
-* Database creation
+## Author
+| SR No | Author  |
+|-------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1     | [Elias Mesones](https://github.com/eliasmaq)                  |
+| 2     | [Diego Miñano](https://github.com/minanodiego)              |
+| 3     | [Chritian Fita](https://github.com/Christian-Fita)                  |
+| 4     | [Camilo Huanca](https://github.com/Camilo-J)                  |
 
-* Database initialization
+## Helpful Links
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* [Version Control](https://en.wikipedia.org/wiki/Version_control)
+* [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+* [Figma](https://www.figma.com/)
+* [Rails Guide](https://guides.rubyonrails.org/)
