@@ -1,0 +1,22 @@
+<h1>Image</h1>
+<% @image%>
+
+  <div>
+    <span><%= @image.title %> </span>
+    <br>
+    <span><%= @image.description%></span>
+    <br>
+    <div><%= image_tag @image.photo if @image.photo.attached?%></div>
+    
+    <p>Here the comments section will be built</p>
+    <br>
+    
+    <br>
+   </div>
+   <br>
+    <% @image.comments.each do |image| %> Comments
+    <div>
+    <hr>
+    <%= image.body %>
+    </div>
+  <% end %>
