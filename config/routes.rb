@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'index/images'
+  get 'index/new'
+  get 'index/show'
+  get 'index/create'
+  get 'index/edit'
+  get 'index/update'
+  get 'index/destroy'
   root "categories#index"
   
   resources :categories

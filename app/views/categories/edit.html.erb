@@ -1,2 +1,17 @@
-<h1>Categories#edit</h1>
-<p>Find me in app/views/categories/edit.html.erb</p>
+<h1>Edit Categories</h1>
+<%= form_with model: @category do |form| %>
+  <div>
+    <% @category.errors.full_messages.each do |message|%>
+      <%= message%>
+    <%end%>
+  </div>
+  <div>
+    <%= form.label :name%></br>
+    <%= form.text_field :name%>
+  </div>
+  <div>
+    <%= form.label :description%></br>
+    <%= form.text_area :description%>
+  </div>  
+  <%= form.submit %>
+<% end %>
