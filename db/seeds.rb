@@ -46,14 +46,14 @@ imagesw1 = Image.create(
     description: "lalalalalala",
     category_id: wallpapers.id
 )
-imagesw1.photo.attach(io: File.open('db/images/nature/image 9.png'), filename: 'imagen 9.png')
+imagesw1.photo.attach(io: File.open('db/images/wallpapers/image 16.png'), filename: 'imagen 9.png')
 
 imagesw2 = Image.create(
     title: "Green Plant",
     description: "lalalalalala",
     category_id: wallpapers.id
 )
-imagesw2.photo.attach(io: File.open('db/images/nature/image 7.png'), filename: 'imagen 7.png')
+imagesw2.photo.attach(io: File.open('db/images/wallpapers/image 17.png'), filename: 'imagen 7.png')
 
 puts "Seeding Comments"
 
