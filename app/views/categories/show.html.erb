@@ -1,2 +1,20 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<h1>Categories</h1>
+<% @images.each do |image| %>
+
+  <div><%= link_to image_path(image)  do%>
+      <div><%= image_tag image.photo if image.photo.attached?%>
+
+    
+    <span><%= image.title %> </span>
+    <br>
+    <span><%= image.description%></span>
+    
+    <br>
+    <%= image.comments_count %> Comments
+    <% end %></div>
+    
+    
+  </div>
+  <br>
+<% end %>
+
