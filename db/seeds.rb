@@ -32,28 +32,28 @@ imagesn1 = Image.create(
     description: "lalalalalala",
     category_id: nature.id
 )
-imagesn1.photo.attach(io: File.open('db/images/images/image 3.png'), filename: 'imagen 3.png')
+imagesn1.photo.attach(io: File.open('db/images/nature/image 3.png'), filename: 'imagen 3.png')
 
 imagesn2 = Image.create(
     title: "Green Plant",
     description: "lalalalalala",
     category_id: nature.id
 )
-imagesn2.photo.attach(io: File.open('db/images/images/image 5.png'), filename: 'imagen 5.png')
+imagesn2.photo.attach(io: File.open('db/images/nature/image 5.png'), filename: 'imagen 5.png')
 
 imagesw1 = Image.create(
     title: "Purple Lake",
     description: "lalalalalala",
     category_id: wallpapers.id
 )
-imagesw1.photo.attach(io: File.open('db/images/images/image 9.png'), filename: 'imagen 9.png')
+imagesw1.photo.attach(io: File.open('db/images/nature/image 9.png'), filename: 'imagen 9.png')
 
 imagesw2 = Image.create(
     title: "Green Plant",
     description: "lalalalalala",
     category_id: wallpapers.id
 )
-imagesw2.photo.attach(io: File.open('db/images/images/image 7.png'), filename: 'imagen 7.png')
+imagesw2.photo.attach(io: File.open('db/images/nature/image 7.png'), filename: 'imagen 7.png')
 
 puts "Seeding Comments"
 
