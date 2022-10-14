@@ -3,8 +3,7 @@
 
   <div><%= link_to category_path(category)  do%>
       <div><%= image_tag category.photo if category.photo.attached?%>
-
-    
+ 
     <span><%= category.name %> </span>
     <br>
     <%= category.photo_count %> photos
