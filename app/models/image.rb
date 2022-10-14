@@ -4,6 +4,5 @@ class Image < ApplicationRecord
   belongs_to :category, counter_cache: true
   has_many :comments, as: :commentable, dependent: :destroy
   # Validations
-  validates: title, presence: true
-  validates: category_id, presence: true
+  validates :title, presence: true
 end

@@ -1,0 +1,13 @@
+<h1>Categories</h1>
+<% @categories.each do |category| %>
+  <div>
+    
+    <span><%= category.name%> </span>
+    </br>
+    <%= category.photo_count%> photos
+    
+    </br>
+    <span><%= category.description%></span>
+  </div>
+  </br>
+<% end %>
