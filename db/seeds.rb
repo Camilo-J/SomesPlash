@@ -25,11 +25,45 @@ people = Category.create(name: "People", description: "Real people, captured.Pho
 
 people.photo.attach(io: File.open('db/images/categories/image 12.png'), filename: 'image12.png')
 
-# puts "Seeding images"
-# images1 = 
-# images2 = 
-# images3 = 
-# images4 = 
-# images5 = 
-# images6 = 
+puts "Seeding images"
+
+imagesn1 = Image.create(
+    title: "Purple Lake",
+    description: "lalalalalala",
+    category_id: nature.id
+)
+imagesn1.photo.attach(io: File.open('db/images/nature/image 3.png'), filename: 'imagen 3.png')
+
+imagesn2 = Image.create(
+    title: "Green Plant",
+    description: "lalalalalala",
+    category_id: nature.id
+)
+imagesn2.photo.attach(io: File.open('db/images/nature/image 5.png'), filename: 'imagen 5.png')
+
+imagesw1 = Image.create(
+    title: "Purple Lake",
+    description: "lalalalalala",
+    category_id: wallpapers.id
+)
+imagesw1.photo.attach(io: File.open('db/images/wallpapers/image 16.png'), filename: 'imagen 9.png')
+
+imagesw2 = Image.create(
+    title: "Green Plant",
+    description: "lalalalalala",
+    category_id: wallpapers.id
+)
+imagesw2.photo.attach(io: File.open('db/images/wallpapers/image 17.png'), filename: 'imagen 7.png')
+
+puts "Seeding Comments"
+
+comment1 = imagesw2.comments.create(body: "lalalalalalallalalalnghbghfsbadasdadajnadnkandjaarkjarnajkrajjda")
+comment1 = imagesw1.comments.create(body: "lalalalalalallalalalnghbghfsbadasdadajnadnkandjaarkjarnajkrajjda")
+
+comment1 = imagesn2.comments.create(body: "lalalalalalallalalalnghbghfsbadasdadajnadnkandjaarkjarnajkrajjda")
+comment1 = imagesn2.comments.create(body: "lalalalalalallalalalnghbghfsbadasdadajnadnkandjaarkjarnajkrajjda")
+
+comment1 = nature.comments.create(body: "lalalalalalallalalalnghbghfsbadasdadajnadnkandjaarkjarnajkrajjda")
+comment1 = nature.comments.create(body: "lalalalalalallalalalnghbghfsbadasdadajnadnkandjaarkjarnajkrajjda")
+
 puts "Finish Seeding"
