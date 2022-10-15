@@ -40,6 +40,12 @@ class ImagesController < ApplicationController
     redirect_to category_path, status: :see_other
   end
 
+  def comments
+    image = Image.find(params[:id])
+    comments = image.comments.create(body: params[:query])
+    redirect_to image_path(comments.commentable)
+  end
+
   private
 
   def image_params

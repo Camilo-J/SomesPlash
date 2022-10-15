@@ -1,0 +1,11 @@
+<%= form_with url: "/commentsc/#{category.id}", method: :post do |form| %>
+<%= form.text_area :query, placeholder: "Some respecful comment here", size: "70x2" %>
+<br>
+<!--textarea {
+  resize: none;
+}-->
+<%= form.submit "Comment" %>
+
+
+<br>
+<% end %>

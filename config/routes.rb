@@ -5,4 +5,8 @@ Rails.application.routes.draw do
   resources :images
   # Defines the root path route ("/")
   root "categories#index"
+  # root "articles#index"
+  post "/comments/:id", to: "images#comments"
+  post "/commentsc/:id", to: "categories#comments"
+
 end

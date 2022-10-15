@@ -10,11 +10,13 @@
     
     <p>Here the comments section will be built</p>
     <br>
-    
     <br>
    </div>
+   <!--, image: @image -->
+    <%= render "comment", image: @image%>
    <br>
-    <% @image.comments.each do |image| %> Comments
+   Comments
+    <% @image.comments.each do |image| %> 
     <div>
     <hr>
     <%= image.body %>
