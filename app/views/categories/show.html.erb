@@ -1,5 +1,7 @@
 <h1><%= @category.name%></h1>
-
+<br>
+<%= link_to "New Photo", new_image_path(category_id: @category.id )%>
+<br>
 <% @images.each do |image| %>
 
   <div><%= link_to image_path(image)  do%>
@@ -11,8 +13,22 @@
     <br>
     <%= image.comments_count %> Comments
     <br>
-    <% end %>
-  </div>
-  <br>
+   </div>
+   <div><%= link_to "Edit Photo", edit_image_path(image, category_id: @category.id )%></div>
+  <% end %>
+
+  <%= link_to "destroy", image_path(image), data: {
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure?"
+          } %>
 <% end %>
+
+ <br>
+ Comments
+    <% @category.comments.each do |category| %> 
+    <div>
+    <hr>
+    <%= category.body %>
+    </div>
+    <% end %>
 
