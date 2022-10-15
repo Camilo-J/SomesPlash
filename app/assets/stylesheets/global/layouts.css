@@ -10,7 +10,7 @@
 
 .container-md {
   max-width: 768px;
-  padding: 0 16px;
+  padding: 16px 0;
   margin: auto;
 }
 

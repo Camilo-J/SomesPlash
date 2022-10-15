@@ -82,3 +82,8 @@
 .gap-0\.5 {
   gap: 0.5rem;
 }
+
+.help{
+  width: 12px;
+  height: 12px;
+}
