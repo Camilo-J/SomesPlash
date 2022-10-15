@@ -16,7 +16,12 @@
     <span><%= category.description%></span>
     <% end %></div>
     
-    
+     <%= link_to "Edit Category", edit_category_path(category) %>
+     <br>
+     <%= link_to "destroy", category_path(category), data: {
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure?"
+          } %>
   </div>
   <br>
 <% end %>

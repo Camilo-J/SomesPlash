@@ -1,0 +1,37 @@
+<%= form_with model: @image do |form| %>
+  <% @image.errors.full_messages_for(:name).each do |message| %>
+    <span> <%= message %></span>
+  <% end %>
+  <br> <br>
+  <% @image.errors.full_messages_for(:description).each do |message| %>
+    <span> <%= message %></span>
+  <% end %>
+  <br><br>
+  <% @image.errors.full_messages_for(:cover).each do |message| %>
+    <span> <%= message %></span><br/>
+  <% end %>
+  <div>
+    <%= form.label :title %> <br/>
+    <%= form.text_field :title %>
+  </div>
+  <br/><br/>
+
+  <div>
+    <%= form.label :description %> <br/>
+    <%= form.text_area :description %>
+  </div>
+
+ <div>
+  <%= form.label :category_id %> <br/>
+    <%= form.collection_select :category_id, Category.order(:name),:id, :name, { selected: @category.id} %>
+  </div>
+
+  <div>
+    <%= form.label :photo %> <br/>
+    <%= form.file_field :photo, accept: "image/png, image/jpeg" %>
+  </div>
+  <br/>
+
+  <br/><br/>
+  <%= form.submit %>
+<% end %>
