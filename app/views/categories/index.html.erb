@@ -1,3 +1,4 @@
+
 <body>
 <header class="header">
 <nav class="navbar">
@@ -14,28 +15,23 @@
 <%= link_to "New Category", new_category_path %>
 <br>
 <br>
+<div class="briefcase-summary__content">
 <% @categories.each do |category| %>
 
-  <div><%= link_to category_path(category)  do%>
-      <div><%= image_tag category.photo if category.photo.attached?%>
- 
-    <span><%= category.name %> </span>
-    <br>
-    <%= category.photo_count %> photos
-    
-    <br>
-    <span><%= category.description%></span>
+  <div class="briefcase-card"><%= link_to category_path(category), class:"text-decoration-none" do%>
+    <div><%= image_tag category.photo if category.photo.attached?%>
+    <span class="head-sm regular"><%= category.name %> </span>
+    <p class="text-sm regular"><%= category.photo_count %> photos</p>
+    <span class="text regular"><%= category.description%></span>
     <% end %></div>
-      
-     <%= link_to "", edit_category_path(category) %>
-     <br>
-     <%= link_to "destroy", category_path(category), data: {
-            turbo_method: :delete,
-            turbo_confirm: "Are you sure?"
-          } %>
+    <div class="briefcase-card__icon-container">
+     <a class="briefcase-card__icon text-decoration-none text-white" href="/categories/new"><i class="ri-pencil-line"></i></a>
+     <a class="briefcase-card__icon text-decoration-none text-white" data-turbo-method="delete" data-turbo-confirm="Are you sure?" href="/categories/3"><i class="ri-delete-bin-line"></i></a>
+    </div>
   </div>
-  <br>
+  
 <% end %>
+  </div>
   </section>
 </main>
 
