@@ -12,6 +12,9 @@
   display: flex;
   justify-content: center;
   gap: .5em;
+  line-height: 16px;
+  letter-spacing: 1.25px;
+  margin: 1rem;
 }
 
 .button--sm {
