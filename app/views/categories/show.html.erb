@@ -22,7 +22,8 @@
             turbo_confirm: "Are you sure?"
           } %>
 <% end %>
-
+<br>
+  <%= render "comment", category: @category %>
  <br>
  Comments
     <% @category.comments.each do |category| %> 

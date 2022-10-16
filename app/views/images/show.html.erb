@@ -1,22 +1,26 @@
-<h1>Image</h1>
-<% @image%>
-
-  <div>
-    <span><%= @image.title %> </span>
-    <br>
-    <span><%= @image.description%></span>
-    <br>
-    <div><%= image_tag @image.photo if @image.photo.attached?%></div>
-    
-    <p>Here the comments section will be built</p>
-    <br>
-    
-    <br>
-   </div>
-   <br>
-    <% @image.comments.each do |image| %> Comments
-    <div>
-    <hr>
-    <%= image.body %>
-    </div>
-  <% end %>
+<section class="section-sm">
+<%# @image%>
+<div class="container-sm container-image">
+<div class="photodetail">
+ <h2><%= @image.title %></h2>
+ <p><%= @image.description%></p>
+  <p> Updated at <%= @image.updated_at.strftime('%b %d, %Y')%></p>
+</div>
+<div class="image"><%= image_tag @image.photo if @image.photo.attached?%></div>
+<div class="form">
+    <%= render "comment", image: @image%>
+</div>
+<div class="Comment">
+ <h2>Comments</h2> 
+ <% @image.comments.each do |comment| %>
+ <div class = "Comment_body">
+ <hr>
+ <p><%= comment.body %></p>
+ <div>
+ <p> Send <%= Date.today.day - comment.updated_at.day%> days ago</p>
+ </div>
+ </div>
+ <% end %>
+</div>
+</div>  
+</section>

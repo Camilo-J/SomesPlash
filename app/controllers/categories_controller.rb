@@ -47,6 +47,13 @@ class CategoriesController < ApplicationController
     redirect_to categories_path, status: :see_other
   end
 
+  def comments
+    category = Category.find(params[:id])
+    category.comments.create(body: params[:query])
+    redirect_to category_path(category.id)
+    # end
+  end
+
   private
 
   def category_params

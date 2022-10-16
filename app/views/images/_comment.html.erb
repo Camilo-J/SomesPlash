@@ -1,0 +1,11 @@
+<%= form_with url: "/comments/#{image.id}", method: :post do |form| %>
+<%= form.text_area :query, placeholder: "Some respecful comment here"%>
+<br>
+<!--textarea {
+  resize: none;
+}-->
+<%= form.submit "Comment" %>
+
+
+<br>
+<% end %>
