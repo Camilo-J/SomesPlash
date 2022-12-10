@@ -1,37 +1,30 @@
 
-<body>
-<header class="header">
-<nav class="navbar">
-<a href="<%= categories_path %>">
-  <img alt="Somesplash_logo" src="https://i.ibb.co/h22BWZQ/image-11.png">
-</a>
-<button class="button" style="margin-right: 2rem">SEARCH</button>
-<nav>
-</header>
-<main class="section-md">
-  <section class="container-lg py-3">
-<h1>Categories</h1>
-<br>
-<%= link_to "New Category", new_category_path %>
-<br>
-<br>
-<div class="briefcase-summary__content">
+<main class="py-5 pb-8">
+  <section class="px-4 m-auto flex flex-col gap-4">
+<h1 class="text-3xl font-semibold">Categories</h1>
+
+<%= link_to "New Category", new_category_path , class: "bg-gray-500 p-0.5 px-2 self-start rounded-md  text-white"%>
+
+<div class="grid auto-cols-auto gap-8">
 <% @categories.each do |category| %>
 
-  <div class="briefcase-card"><%= link_to category_path(category), class:"text-decoration-none" do%>
-    <div><%= image_tag category.photo if category.photo.attached?%>
-    <span class="head-sm regular"><%= category.name %> </span>
-    <p class="text-sm regular"><%= category.photo_count %> photos</p>
-    <span class="text regular"><%= category.description%></span>
-    <% end %></div>
-    <div class="briefcase-card__icon-container">
-     <a class="briefcase-card__icon text-decoration-none text-white" href="/categories/new"><i class="ri-pencil-line"></i></a>
-     <a class="briefcase-card__icon text-decoration-none text-white" data-turbo-method="delete" data-turbo-confirm="Are you sure?" href="/categories/3"><i class="ri-delete-bin-line"></i></a>
+  <div class="shadow-lg rounded-md"><%= link_to category_path(category), class:"text-decoration-none" do%>
+    <div>
+    <%= image_tag category.photo, class: "rounded-t-xl" if category.photo.attached?%>
+    </div>
+    <div class="py-2 px-6">
+    <span class="text-3xl font-semibold"><%= category.name %> </span>
+    <p class="text-sm font-normal text-gray-300"><%= category.photo_count %> photos</p>
+    <span class="text-base font-normal"><%= category.description%></span>
+    <% end %>
+      <div class="flex justify-end gap-2">
+     <a class="flex justify-center items-center h-7 w-7 rounded-2xl bg-gray-500 no-underline text-white" href="/categories/<%= category.id %>/edit"><i class="ri-pencil-line"></i></a>
+     <a class="flex justify-center items-center h-7 w-7 rounded-2xl bg-gray-500 no-underline text-white" data-turbo-method="delete" data-turbo-confirm="Are you sure?" href="/categories/<%= category.id %>"><i class="ri-delete-bin-line"></i></a>
+    </div>
     </div>
   </div>
-  
+
 <% end %>
   </div>
   </section>
 </main>
-</body>
