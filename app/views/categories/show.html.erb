@@ -1,57 +1,55 @@
-<h1><%= @category.name%></h1>
-<br>
-<%= link_to "New Photo", new_image_path(category_id: @category.id )%>
-<br>
-<% @images.each do |image| %>
 
-  <div><%= link_to image_path(image)  do%>
-    <div><%= image_tag image.photo if image.photo.attached?%></div>
-    <br>
-    <span><%= image.title %> </span>
-    <br>
-    <span><%= image.description%></span>
-    <br>
-    <%= image.comments_count %> Comments
-    <br>
-   </div>
-   <div><%= link_to "Edit Photo", edit_image_path(image, category_id: @category.id )%></div>
-  <% end %>
+<section class="px-4 m-auto flex flex-col gap-5">
+  <h1 class="text-3xl font-semibold"><%= @category.name%></h1>
+  <p class="text-lg font-normal text-gray-700"><%= @category.description%></p>
+  <%= link_to "New Photo", new_image_path(category_id: @category.id ), class: "bg-gray-500 p-0.5 px-2 self-start rounded-md  text-white"%>
 
-  <%= link_to "destroy", image_path(image), data: {
+<div class="grid auto-cols-auto gap-8">
+    <% @images.each do |image| %>
+  <div class="bg-gray-100 rounded-b-xl shadow-lg">
+    <div>
+      <%= link_to image_path(image)  do%>
+      <%= image_tag image.photo, class:"h-60 w-full object-cover rounded-t-xl" if image.photo.attached?%>
+    </div>
+    <div class="py-2 px-4">
+        <p class="text-xl font-semibold"><%= image.title %> </p>     
+        <div class="flex justify-between">
+        <p><%= image.comments_count %> Comments</p>
+         <div class="flex gap-2">
+           <%= link_to edit_image_path(image, category_id: @category.id ), class: "flex justify-center items-center h-7 w-7 rounded-2xl bg-gray-500 no-underline text-white" do%>
+             <i class="ri-pencil-line"></i>
+           <%end%>
+       <%= link_to image_path(image), data: {
             turbo_method: :delete,
             turbo_confirm: "Are you sure?"
-          } %>
+          }, class: "flex justify-center items-center h-7 w-7 rounded-2xl bg-gray-500 no-underline text-white" do %>
+
+          <i class="ri-delete-bin-line"></i>
+          <%end%>
+         </div>
+        </div>
+    </div>
+  </div>
+    <% end %>
 <% end %>
-<br>
-  <%= render "comment", category: @category %>
- <br>
- Comments
-    <% @category.comments.each do |category| %> 
-    <div>
-    <hr>
-    <%= category.body %>
+</div>
+
+  <div>
+  <%= render "comment", category: @category %>   
+  </div>
+  <p class="text-xl font-semibold">Coments</p>
+  <div class="grid auto-cols-auto gap-4">
+    <% @category.comments.each do |comments| %> 
+    <div class="shadow-md rounded-md p-2">
+      <%= comments.body %>
+      <div class="flex justify-between">
+        <p><%= comments.updated_at %></p> 
+        <i class="ri-delete-bin-line"></i>
+      </div>
     </div>
     <% end %>
-
-<footer class="footer">
-  <div class="container-md footer__content">
-    <p class="text-sm regular">Build with ♥ by</p>
-      <div class="footer__content-link">
-        <a href="https://www.linkedin.com/in/minanodiego/" target="_blank" class="footer__content-link-name">
-          <svg><use xlink:href="#linkedin"/></svg>
-          <p class="text-xs regular">Diego Miñano</p>
-        </a>
-        <a href="#" target="_blank" class="footer__content-link-name">
-          <svg><use xlink:href="#linkedin"/></svg>
-          <p class="text-xs regular">Elias Mesones</p>
-        </a>
-        <a href="https://www.linkedin.com/in/jose-camilo-huanca-torre-76b932246/" target="_blank" class="footer__content-link-name">
-          <svg><use xlink:href="#linkedin"/></svg>
-          <p class="text-xs regular">Camilo Huanca</p>
-        </a>
-      </div>
   </div>
-</footer>
+  
 
 <div hidden>
   <svg xmlns="http://www.w3.org/2000/svg">
@@ -60,3 +58,4 @@
     </symbol>
   </svg>
 </div>
+  </section>
