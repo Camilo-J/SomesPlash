@@ -43,7 +43,7 @@
     <div class="shadow-md rounded-md p-2">
       <%= comments.body %>
       <div class="flex justify-between">
-        <p><%= comments.updated_at %></p> 
+        <p><%= comments.updated_at.strftime('%b %d, %Y') %></p> 
         <i class="ri-delete-bin-line"></i>
       </div>
     </div>
