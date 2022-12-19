@@ -39,11 +39,11 @@
   </div>
   <p class="text-xl font-semibold">Coments</p>
   <div class="grid auto-cols-auto gap-4">
-    <% @category.comments.each do |comments| %> 
+    <% @category.comments.each do |comment| %> 
     <div class="shadow-md rounded-md p-2">
-      <%= comments.body %>
+      <%= comment.body %>
       <div class="flex justify-between">
-        <p><%= comments.updated_at.strftime('%b %d, %Y') %></p> 
+        <p><%= Date.today.day - comment.updated_at.day%> days ago</p> 
         <i class="ri-delete-bin-line"></i>
       </div>
     </div>

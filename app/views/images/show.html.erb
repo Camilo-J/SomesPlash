@@ -1,24 +1,23 @@
-  <section class="container-lg py-3 container">
-    <div class=" flex flex-col justify-center gap-8">
-      <h2 class="head-sm "><%= @image.title %></h2>
-      <p class="text-md"><%= @image.description%></p>
-      <p class="text-sm text-gray-300"> Updated at <%= @image.updated_at.strftime('%b %d, %Y')%></p>
+  <section class="container-lg  container">
+    <div class=" flex flex-col justify-center">
+      <h2 class="head-sm font-semibold"><%= @image.title %></h2>
+      <p class="text-md font-normal"><%= @image.description%></p>
+      <p class="text-sm font-normal text-gray-300"> Updated at <%= @image.updated_at.strftime('%b %d, %Y')%></p>
     </div>
-    <div class="image"><%= image_tag @image.photo if @image.photo.attached?%></div>
-    <div class="form">
+    <div class="flex"><%= image_tag @image.photo, class: "h-56 object-cover flex-grow rounded" if @image.photo.attached?%></div>
+    <div >
       <%= render "comment", image: @image%>
     </div>
-
     <div class="Comment">
-      <h2 class="text-xl">Comments</h2> 
-     <div class = "briefcase-summary__content">
-      <% @image.comments.each do |comment| %>
-      <div class = "Comment_body briefcase-card">
+      <h2 class="text-xl font-semibold">Comments</h2> 
+      <div class = "grid auto-cols-auto gap-4">
+       <% @image.comments.each do |comment| %>
+      <div class = "shadow-md rounded-md p-2">
+        <p class = "text regular"><%= comment.body%></p>
 
-        <p class = "text regular"><%= comment.body%>
-    </p>
-      <div>
+      <div class="flex justify-between">
         <p class="text-gray-300 text-sm"> Send <%= Date.today.day - comment.updated_at.day%> days ago</p>
+        <i class="ri-delete-bin-line"></i>
      </div>
     </div>
     </div>
