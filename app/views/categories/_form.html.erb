@@ -1,32 +1,36 @@
-<%= form_with model: @category do |form| %>
+<%= form_with model: @category, class: "flex flex-col gap-4" do |form| %>
   <% @category.errors.full_messages_for(:name).each do |message| %>
-    <span> <%= message %></span>
-  <% end %>
-  <br> <br>
-  <% @category.errors.full_messages_for(:description).each do |message| %>
-    <span> <%= message %></span>
-  <% end %>
-  <br><br>
-  <% @category.errors.full_messages_for(:cover).each do |message| %>
-    <span> <%= message %></span><br/>
-  <% end %>
-  <div>
-    <%= form.label :name %> <br/>
-    <%= form.text_field :name %>
-  </div>
-  <br/><br/>
+    <span>
+      <%= message %>
+    </span>
+    <% end %>
 
-  <div>
-    <%= form.label :description %> <br/>
-    <%= form.text_area :description %>
-  </div>
+      <% @category.errors.full_messages_for(:description).each do |message| %>
+        <span class="gap-4">
+          <%= message %>
+        </span>
+        <% end %>
 
-  <div>
-    <%= form.label :photo %> <br/>
-    <%= form.file_field :photo, accept: "image/png, image/jpeg" %>
-  </div>
-  <br/>
+          <% @category.errors.full_messages_for(:photo).each do |message| %>
+            <span>
+              <%= message %>
+            </span>
+            <% end %>
+              <div class="flex flex-col">
+                <%= form.label :name, class: "text-gray-600" %>
+                  <%= form.text_field :name, class: "rounded-md border-gray-300" %>
+              </div>
 
-  <br/><br/>
-  <%= form.submit %>
-<% end %>
+
+              <div class="flex flex-col">
+                <%= form.label :description, class: "text-gray-600" %>
+                  <%= form.text_area :description, class: "rounded-md border-gray-300 h-36" %>
+              </div>
+
+              <div class="flex flex-col">
+                <%= form.label :photo, class: "text-gray-600" %>
+                  <%= form.file_field :photo, accept: "image/png, image/jpeg" %>
+              </div>
+
+              <%= form.submit "CREATE CATEGORY", class: "bg-gray-500 w-full text-white p-1 rounded" %>
+                <% end %>
