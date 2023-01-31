@@ -5,4 +5,12 @@ class Category < ApplicationRecord
   has_many :images, dependent: :destroy
   # Validations
   validates :name, presence: true
+
+  validate :image_type
+
+  private
+
+  def image_type
+    errors.add(:photo, "is missing!") unless photo.attached?
+  end
 end

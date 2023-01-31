@@ -1,62 +1,70 @@
-<h1><%= @category.name%></h1>
-<br>
-<%= link_to "New Photo", new_image_path(category_id: @category.id )%>
-<br>
-<% @images.each do |image| %>
+<section class="px-4 m-auto flex flex-col gap-5">
+  <h1 class="text-3xl font-semibold">
+    <%= @category.name%>
+  </h1>
+  <p class="text-lg font-normal text-gray-700">
+    <%= @category.description%>
+  </p>
+  <%= link_to "New Photo" , new_image_path(category_id: @category.id ),
+    class: "bg-gray-500  px-2 self-start rounded-md  text-white py-1" %>
 
-  <div><%= link_to image_path(image)  do%>
-    <div><%= image_tag image.photo if image.photo.attached?%></div>
-    <br>
-    <span><%= image.title %> </span>
-    <br>
-    <span><%= image.description%></span>
-    <br>
-    <%= image.comments_count %> Comments
-    <br>
-   </div>
-   <div><%= link_to "Edit Photo", edit_image_path(image, category_id: @category.id )%></div>
-  <% end %>
+    <div class="grid auto-cols-auto gap-8">
+      <% @images.each do |image| %>
+        <div class="bg-gray-100 rounded-b-xl shadow-lg">
+          <div>
+            <%= link_to image_path(image) do%>
+              <%= image_tag image.photo, class:"h-60 w-full object-cover rounded-t-xl" if image.photo.attached?%>
+          </div>
+          <div class="py-2 px-4 ">
+            <p class="text-xl font-semibold">
+              <%= image.title %>
+            </p>
+            <div class="flex justify-between">
+              <p>
+                <%= image.comments_count %> Comments
+              </p>
+              <div class="flex gap-2">
+                <%= link_to edit_image_path(image, category_id: @category.id ),
+                  class: "flex justify-center items-center h-7 w-7 rounded-2xl bg-gray-500 no-underline text-white" do%>
+                  <i class="ri-pencil-line"></i>
+                  <%end%>
+                    <%= link_to image_path(image), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                      class: "flex justify-center items-center h-7 w-7 rounded-2xl bg-gray-500 no-underline text-white" do %>
 
-  <%= link_to "destroy", image_path(image), data: {
-            turbo_method: :delete,
-            turbo_confirm: "Are you sure?"
-          } %>
-<% end %>
-<br>
-  <%= render "comment", category: @category %>
- <br>
- Comments
-    <% @category.comments.each do |category| %> 
-    <div>
-    <hr>
-    <%= category.body %>
+                      <i class="ri-delete-bin-line"></i>
+                      <%end%>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+          <% end %>
     </div>
-    <% end %>
 
-<footer class="footer">
-  <div class="container-md footer__content">
-    <p class="text-sm regular">Build with ♥ by</p>
-      <div class="footer__content-link">
-        <a href="https://www.linkedin.com/in/minanodiego/" target="_blank" class="footer__content-link-name">
-          <svg><use xlink:href="#linkedin"/></svg>
-          <p class="text-xs regular">Diego Miñano</p>
-        </a>
-        <a href="#" target="_blank" class="footer__content-link-name">
-          <svg><use xlink:href="#linkedin"/></svg>
-          <p class="text-xs regular">Elias Mesones</p>
-        </a>
-        <a href="https://www.linkedin.com/in/jose-camilo-huanca-torre-76b932246/" target="_blank" class="footer__content-link-name">
-          <svg><use xlink:href="#linkedin"/></svg>
-          <p class="text-xs regular">Camilo Huanca</p>
-        </a>
-      </div>
-  </div>
-</footer>
+    <div>
+      <%= render "comment" , category: @category %>
+    </div>
+    <p class="text-xl font-semibold">Coments</p>
+    <div class="grid auto-cols-auto gap-4">
+      <% @category.comments.each do |comment| %>
+        <div class="shadow-md rounded-md p-2">
+          <%= comment.body %>
+            <div class="flex justify-between">
+              <p>Send <%= time_ago_in_words(comment.updated_at)%> ago</p>
+              <i class="ri-delete-bin-line"></i>
+            </div>
+        </div>
+        <% end %>
+    </div>
 
-<div hidden>
-  <svg xmlns="http://www.w3.org/2000/svg">
-    <symbol id="linkedin" viewBox="0 0 12 12">
-    <path d="M0.666667 0H11.3333C11.5101 0 11.6797 0.0702379 11.8047 0.195262C11.9298 0.320286 12 0.489856 12 0.666667V11.3333C12 11.5101 11.9298 11.6797 11.8047 11.8047C11.6797 11.9298 11.5101 12 11.3333 12H0.666667C0.489856 12 0.320286 11.9298 0.195262 11.8047C0.0702379 11.6797 0 11.5101 0 11.3333V0.666667C0 0.489856 0.0702379 0.320286 0.195262 0.195262C0.320286 0.0702379 0.489856 0 0.666667 0ZM1.33333 1.33333V10.6667H10.6667V1.33333H1.33333ZM3 4C2.73478 4 2.48043 3.89464 2.29289 3.70711C2.10536 3.51957 2 3.26522 2 3C2 2.73478 2.10536 2.48043 2.29289 2.29289C2.48043 2.10536 2.73478 2 3 2C3.26522 2 3.51957 2.10536 3.70711 2.29289C3.89464 2.48043 4 2.73478 4 3C4 3.26522 3.89464 3.51957 3.70711 3.70711C3.51957 3.89464 3.26522 4 3 4ZM2.33333 4.66667H3.66667V9.66667H2.33333V4.66667ZM6 4.95333C6.38933 4.57667 6.844 4.33333 7.33333 4.33333C8.714 4.33333 9.66667 5.45267 9.66667 6.83333V9.66667H8.33333V6.83333C8.33333 6.52391 8.21042 6.22717 7.99162 6.00838C7.77283 5.78958 7.47609 5.66667 7.16667 5.66667C6.85725 5.66667 6.5605 5.78958 6.34171 6.00838C6.12292 6.22717 6 6.52391 6 6.83333V9.66667H4.66667V4.66667H6V4.95333Z" fill="#616161"/>
-    </symbol>
-  </svg>
-</div>
+
+    <div hidden>
+      <svg xmlns="http://www.w3.org/2000/svg">
+        <symbol id="linkedin" viewBox="0 0 12 12">
+          <path
+            d="M0.666667 0H11.3333C11.5101 0 11.6797 0.0702379 11.8047 0.195262C11.9298 0.320286 12 0.489856 12 0.666667V11.3333C12 11.5101 11.9298 11.6797 11.8047 11.8047C11.6797 11.9298 11.5101 12 11.3333 12H0.666667C0.489856 12 0.320286 11.9298 0.195262 11.8047C0.0702379 11.6797 0 11.5101 0 11.3333V0.666667C0 0.489856 0.0702379 0.320286 0.195262 0.195262C0.320286 0.0702379 0.489856 0 0.666667 0ZM1.33333 1.33333V10.6667H10.6667V1.33333H1.33333ZM3 4C2.73478 4 2.48043 3.89464 2.29289 3.70711C2.10536 3.51957 2 3.26522 2 3C2 2.73478 2.10536 2.48043 2.29289 2.29289C2.48043 2.10536 2.73478 2 3 2C3.26522 2 3.51957 2.10536 3.70711 2.29289C3.89464 2.48043 4 2.73478 4 3C4 3.26522 3.89464 3.51957 3.70711 3.70711C3.51957 3.89464 3.26522 4 3 4ZM2.33333 4.66667H3.66667V9.66667H2.33333V4.66667ZM6 4.95333C6.38933 4.57667 6.844 4.33333 7.33333 4.33333C8.714 4.33333 9.66667 5.45267 9.66667 6.83333V9.66667H8.33333V6.83333C8.33333 6.52391 8.21042 6.22717 7.99162 6.00838C7.77283 5.78958 7.47609 5.66667 7.16667 5.66667C6.85725 5.66667 6.5605 5.78958 6.34171 6.00838C6.12292 6.22717 6 6.52391 6 6.83333V9.66667H4.66667V4.66667H6V4.95333Z"
+            fill="#616161" />
+        </symbol>
+      </svg>
+    </div>
+</section>

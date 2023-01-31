@@ -1,26 +1,25 @@
-<section class="section-sm">
-<%# @image%>
-<div class="container-sm container-image">
-<div class="photodetail">
- <h2><%= @image.title %></h2>
- <p><%= @image.description%></p>
-  <p> Updated at <%= @image.updated_at.strftime('%b %d, %Y')%></p>
-</div>
-<div class="image"><%= image_tag @image.photo if @image.photo.attached?%></div>
-<div class="form">
-    <%= render "comment", image: @image%>
-</div>
-<div class="Comment">
- <h2>Comments</h2> 
- <% @image.comments.each do |comment| %>
- <div class = "Comment_body">
- <hr>
- <p><%= comment.body %></p>
- <div>
- <p> Send <%= Date.today.day - comment.updated_at.day%> days ago</p>
- </div>
- </div>
- <% end %>
-</div>
-</div>  
-</section>
+  <section class="px-4 flex flex-col gap-4">
+    <div class=" flex flex-col justify-center">
+      <h2 class="text-3xl font-semibold"><%= @image.title %></h2>
+      <p class="text-base font-normal"><%= @image.description%></p>
+      <p class="text-sm font-normal text-gray-400"> Updated at <%= @image.updated_at.strftime('%b %d, %Y')%></p>
+    </div>
+    <div class="flex"><%= image_tag @image.photo, class: "h-56 object-cover flex-grow rounded" if @image.photo.attached?%></div>
+    <div >
+      <%= render "comment", image: @image%>
+    </div>
+    <div class="Comment">
+      <h2 class="text-xl font-semibold">Comments</h2> 
+    <div class = "grid auto-cols-auto gap-4">
+       <% @image.comments.each do |comment| %>
+       <div class = "shadow-md rounded-md p-4">
+        <p class = "text regular"><%= comment.body%></p>
+
+        <div class="flex justify-between">
+          <p class="text-gray-400 text-sm"> Send <%= time_ago_in_words(comment.updated_at)%> ago</p>
+          <i class="ri-delete-bin-line"></i>
+        </div>
+      </div>
+   <% end %>
+    </div>
+ </section>  

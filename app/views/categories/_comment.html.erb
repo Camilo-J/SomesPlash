@@ -1,11 +1,8 @@
 <%= form_with url: "/commentsc/#{category.id}", method: :post do |form| %>
-<%= form.text_area :query, placeholder: "Some respecful comment here", size: "70x2" %>
-<br>
+  <%= form.text_area :query, placeholder: "Some respecful comment here", class:"w-full rounded-md h-20" %>
 <!--textarea {
   resize: none;
 }-->
-<%= form.submit "Comment" %>
+  <%= form.submit "Comment", class: "bg-gray-500 py-1 px-2 self-start rounded-md  text-white w-full" %>
 
-
-<br>
 <% end %>

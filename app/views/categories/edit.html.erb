@@ -1,7 +1,6 @@
-<h1>Edit Categories</h1>
-<br>
-<%= render "form", category: @category %>
+<div class="px-4">
+  <h1 class="text-3xl font-semibold">Edit Categories</h1>
 
-<br>
-<%= link_to "Back", categories_path %>
-
+  <%= render "form", category: @category %>
+  <%= link_to "BACK", categories_path,class: "mt-4 flex items-center justify-center bg-gray-200 w-full p-1 rounded" %>
+</div>
