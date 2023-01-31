@@ -1,5 +1,4 @@
 # SOMESPLASH
-## Description
 
 Welcome aboard fellow developer, this project is about  an open source platforms to share amazing photos with the world.
 
@@ -11,6 +10,36 @@ This project was built only with the design of the main views [here](https://www
 ### Erd Somesplash
 
 ![ERD](ERD.PNG)
+
+## Installation
+
+For this project I used [rbenv](https://github.com/rbenv/rbenv) to manage gems..
+
+#### 1. Clone or download this project
+```bash
+git clone git@github.com:Camilo-J/SomesPlash.git
+```
+
+#### 2. Install all the project's gems
+```ruby
+bundle install
+```
+
+#### 3. Create the database for the project
+```ruby
+rails db:create
+```
+
+#### 4. Execute all the migrations
+```ruby
+rails db:migrate
+```
+
+#### 5. Raise the server.That's all, Enjoy the project!! :)
+```ruby
+rails s
+```
+
 
 ## Author
 | SR No | Author  |
