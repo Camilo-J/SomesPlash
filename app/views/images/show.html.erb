@@ -16,7 +16,7 @@
         <p class = "text regular"><%= comment.body%></p>
 
       <div class="flex justify-between">
-        <p class="text-gray-300 text-sm"> Send <%= Date.today.day - comment.updated_at.day%> days ago</p>
+        <p class="text-gray-300 text-sm"> Send <%= time_ago_in_words(comment.updated_at)%> ago</p>
         <i class="ri-delete-bin-line"></i>
      </div>
     </div>
