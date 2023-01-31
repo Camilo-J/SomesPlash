@@ -6,7 +6,7 @@
     <%= @category.description%>
   </p>
   <%= link_to "New Photo" , new_image_path(category_id: @category.id ),
-    class: "bg-gray-500 p-0.5 px-2 self-start rounded-md  text-white" %>
+    class: "bg-gray-500  px-2 self-start rounded-md  text-white py-1" %>
 
     <div class="grid auto-cols-auto gap-8">
       <% @images.each do |image| %>
