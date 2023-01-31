@@ -1,37 +1,35 @@
-<%= form_with model: @image do |form| %>
+<%= form_with model: @image, class: "flex flex-col gap-4" do |form|  %>
   <% @image.errors.full_messages_for(:name).each do |message| %>
     <span> <%= message %></span>
   <% end %>
-  <br> <br>
+
   <% @image.errors.full_messages_for(:description).each do |message| %>
     <span> <%= message %></span>
   <% end %>
-  <br><br>
+
   <% @image.errors.full_messages_for(:cover).each do |message| %>
-    <span> <%= message %></span><br/>
+    <span> <%= message %></span>
   <% end %>
   <div>
-    <%= form.label :title %> <br/>
-    <%= form.text_field :title %>
+    <%= form.label :title %> 
+    <%= form.text_field :title , class: "w-full rounded-md", placeholder: "Big mountain"%>
   </div>
-  <br/><br/>
+
 
   <div>
-    <%= form.label :description %> <br/>
-    <%= form.text_area :description %>
+    <%= form.label :description %> 
+    <%= form.text_area :description, class: "w-full rounded-md", placeholder: "Photo taken on" %>
   </div>
 
  <div>
-  <%= form.label :category_id %> <br/>
-    <%= form.collection_select :category_id, Category.order(:name),:id, :name, { selected: @category.id} %>
+  <%= form.label :category_id %> 
+    <%= form.collection_select :category_id, Category.order(:name),:id, :name, { selected: @category.id}, class: "w-full rounded-md" %>
   </div>
 
-  <div>
-    <%= form.label :photo %> <br/>
+  <div >
+    <%= form.label :photo %> 
     <%= form.file_field :photo, accept: "image/png, image/jpeg" %>
   </div>
-  <br/>
 
-  <br/><br/>
-  <%= form.submit %>
+  <%= form.submit "CREATE PHOTO",class: "flex items-center justify-center bg-gray-500 w-full p-1 rounded text-white" %>
 <% end %>
