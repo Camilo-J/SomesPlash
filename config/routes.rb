@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   resources :categories
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :images
@@ -8,5 +7,6 @@ Rails.application.routes.draw do
   # root "articles#index"
   post "/comments/:id", to: "images#comments"
   post "/commentsc/:id", to: "categories#comments"
-
+  get "/search", to: "searchs#index"
+  post "/search", to: "searchs#search"
 end
