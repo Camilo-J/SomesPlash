@@ -13,12 +13,12 @@
   </head>
 
   <body>
-<div class="w-96 min-h-screen flex flex-col border-2 border-gray-300">
-   <%= render "/shared/header"%>
-    <main class="py-5 pb-8">
-    <%= yield %>
-    </main>
-  <%= render "/shared/footer"%>
-</div>
+    <div class="md:max-w-3xl min-h-screen flex flex-col">
+      <%= render "/shared/header"%>
+      <main class="py-5 pb-8">
+      <%= yield %>
+      </main>
+      <%= render "/shared/footer"%>
+    </div>
   </body>
 </html>
