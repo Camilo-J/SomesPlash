@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   post "/comments/:id", to: "images#comments"
   post "/commentsc/:id", to: "categories#comments"
   get "/search", to: "searchs#index"
-  post "/search", to: "searchs#search"
+  post "/search", to: "searchs#show"
 end
