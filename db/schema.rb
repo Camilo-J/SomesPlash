@@ -47,7 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_14_172213) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "photo_count", default: 0
+    t.integer "photos_count", default: 0
     t.integer "comments_count", default: 0
   end
 
